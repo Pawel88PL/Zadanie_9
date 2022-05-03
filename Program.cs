@@ -24,7 +24,7 @@ namespace Zadanie_9
             do
             {
                 Console.Write("Podaj górny zakres, do którego chcesz odnaleźć liczby pierwsze: ");
-                if (int.TryParse(Console.ReadLine(), out zakres) && zakres > 1)
+                if (int.TryParse(Console.ReadLine(), out zakres) && zakres < 9999 && zakres > 1)
                 {
                     
                     dokad =(int) Math.Floor(Math.Sqrt(zakres));
@@ -64,6 +64,12 @@ namespace Zadanie_9
                     Console.WriteLine("Liczba 1 nie jest liczbą pierwszą!");
                     koniec = "nie";
                     
+                }
+                else if (zakres > 9999)
+                {
+                    Console.WriteLine("Wartość poza zakresem!");
+                    koniec = "nie";
+
                 }
                 else 
                 {
