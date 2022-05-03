@@ -18,13 +18,15 @@ namespace Zadanie_9
             int[] tablica = new int[10000];
             string koniec;
 
-            Console.WriteLine("Program sprawdza czy podana liczba jest liczbą pierwszą.");
+            Console.WriteLine("Program wyświetla zbiór liczb pierwszych z podanego zakresu. Dostępny zakres 1 - 9999");
+            Console.WriteLine();
 
             do
             {
                 Console.Write("Podaj górny zakres, do którego chcesz odnaleźć liczby pierwsze: ");
-                if (int.TryParse(Console.ReadLine(), out zakres))
+                if (int.TryParse(Console.ReadLine(), out zakres) && zakres > 1)
                 {
+                    
                     dokad =(int) Math.Floor(Math.Sqrt(zakres));
 
                     for (i = 1; i <= zakres; i++)
@@ -45,18 +47,31 @@ namespace Zadanie_9
                         }
                     }
 
-                    Console.Write("Liczby pierwsze z zakresu od 1 do " + zakres);
+                    Console.WriteLine("Liczby pierwsze z zakresu od 1 do " + zakres + " to:");
                     for (i = 2; i <= zakres; i++)
                     {
                         if (tablica[i] !=0)
                         {
-                            Console.WriteLine(i + ", ");
+                            Console.Write(i + ", ");
                         }
                     }
+                    Console.WriteLine();
+                    Console.WriteLine("Czy chcesz zamknąć program? Tak - Enter, Nie - wpisz słowo 'nie'.");
+                    koniec = Console.ReadLine();
+                }
+                else if (zakres > 0 && zakres < 2)
+                {
+                    Console.WriteLine("Liczba 1 nie jest liczbą pierwszą!");
+                    koniec = "nie";
+                    
+                }
+                else 
+                {
+                    Console.WriteLine("Błędna wartość. Spróbuj ponownie!");
+                    koniec = "nie";
                 }
 
-                Console.WriteLine("Czy chcesz zamknąć program? Tak - enter, Nie - wpisz słowo 'nie'.");
-                koniec = Console.ReadLine();
+                
             }
             while (koniec == "nie");
         }
