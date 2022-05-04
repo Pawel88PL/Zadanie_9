@@ -10,21 +10,21 @@ namespace Zadanie_9
     {
         static void Main(string[] args)
         {
-            // Program sprawdza, czy podana liczba jest liczbą pierwszą nie wykorzystując
-            // operacji dzielenia. Wykorzystano sito Eratostenesa i tablicę elementów typu bool.
-            // Dodatkowo program obsługuje wyjątki.
+            // Program wyświetla zbiór liczb pierwszych z podanego zakresu liczb dodatnich.
+            // Wykorzystano sito Eratostenesa.
+            // Program obsługuje wyjątki.
 
             int i, j, zakres, dokad;
-            int[] tablica = new int[10000];
+            int[] tablica = new int[1000000];
             string koniec;
 
-            Console.WriteLine("Program wyświetla zbiór liczb pierwszych z podanego zakresu. Dostępny zakres 1 - 9999");
+            Console.WriteLine("Program wyświetla zbiór liczb pierwszych z podanego zakresu liczb dodatnich. Dostępny zakres 1 - 999999");
             Console.WriteLine();
 
             do
             {
                 Console.Write("Podaj górny zakres, do którego chcesz odnaleźć liczby pierwsze: ");
-                if (int.TryParse(Console.ReadLine(), out zakres) && zakres < 9999 && zakres > 1)
+                if (int.TryParse(Console.ReadLine(), out zakres) && zakres < 1000000 && zakres > 1)
                 {
                     
                     dokad =(int) Math.Floor(Math.Sqrt(zakres));
@@ -65,15 +65,21 @@ namespace Zadanie_9
                     koniec = "nie";
                     
                 }
-                else if (zakres > 9999)
+                else if (zakres > 999999)
                 {
-                    Console.WriteLine("Wartość poza zakresem!");
+                    Console.WriteLine("Wartość poza zakresem.");
+                    koniec = "nie";
+
+                }
+                else if (zakres < 0)
+                {
+                    Console.WriteLine("Proszę podać liczbę dodatnią.");
                     koniec = "nie";
 
                 }
                 else 
                 {
-                    Console.WriteLine("Błędna wartość. Spróbuj ponownie!");
+                    Console.WriteLine("Błędna wartoś. Proszę podać liczbę.");
                     koniec = "nie";
                 }
 
